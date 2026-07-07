@@ -1,5 +1,6 @@
 from django.contrib import admin
-from accounts.models import User
+
+from accounts.models import User, Profile
 from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
@@ -28,8 +29,8 @@ class CustomUserAdmin(UserAdmin):
         ('Authentication', {
             'fields': ('email', 'password')
         }),
-        ("Personal info", {
-            "fields": ("first_name", "last_name"),
+        ('Personal info', {
+            'fields': ('first_name', 'last_name'),
         }),
         ('Permissions', {
             'fields': ('is_staff', 'is_active', 'is_superuser')
@@ -61,4 +62,29 @@ class CustomUserAdmin(UserAdmin):
     )
 
 
+class CustomProfileAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for the Profile model.
+    """
+
+    list_display = (
+        'user',
+        'created_at',
+        'updated_at',
+    )
+
+    search_fields = (
+        'user__email',
+        'user__first_name',
+        'user__last_name',
+    )
+
+    readonly_fields = (
+        'created_at',
+        'updated_at',
+    )
+    list_filter = ('created_at',)
+
+
 admin.site.register(User, CustomUserAdmin)
+admin.site.register(Profile, CustomProfileAdmin)

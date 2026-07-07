@@ -9,12 +9,15 @@ from django.utils.translation import gettext_lazy as _
 class CustomUserManager(UserManager):
     """
         Custom manager for the User model.
-
         Provides helper methods for creating regular users and superusers
         using email as the unique authentication field.
     """
 
     def create_user(self, email, password, **extra_fields):
+        """
+            Create a user with the given password and email
+        """
+
         if not email:
             raise ValueError(_("Email must be set"))
 
@@ -25,6 +28,10 @@ class CustomUserManager(UserManager):
         return user
 
     def create_superuser(self, email, password, **extra_fields):
+        """
+            Create and save a superuser with the given password and email
+        """
+
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_active', True)
@@ -53,3 +60,19 @@ class User(AbstractUser, TimeStampedModel):
 
     def __str__(self):
         return self.email
+
+
+class Profile(TimeStampedModel, models.Model):
+    """
+    Stores additional information associated with a user account,
+    including avatar and biography.
+    """
+
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name='profile')
+    avatar = models.ImageField(
+        blank=True, upload_to='accounts/avatars/')
+    bio = models.TextField(blank=True)
+
+    def __str__(self):
+        return f"{self.user.email} Profile"
