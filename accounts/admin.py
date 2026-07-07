@@ -5,7 +5,6 @@ from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
 
-
 class CustomUserAdmin(UserAdmin):
     """
     Admin configuration for the custom User model.
@@ -66,6 +65,12 @@ class CustomProfileAdmin(admin.ModelAdmin):
     """
     Admin configuration for the Profile model.
     """
+    fields = (
+        'user',
+        'avatar',
+        'bio',
+        ('created_at', 'updated_at'),
+    )
 
     list_display = (
         'user',
