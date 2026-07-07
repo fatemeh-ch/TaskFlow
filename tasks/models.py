@@ -57,3 +57,24 @@ class Category(TimeStampedModel, models.Model):
 
     def __str__(self):
         return self.title
+
+
+class SubTask(TimeStampedModel, models.Model):
+    """
+        Represents a single checklist item belonging to a task.
+    """
+
+    title = models.CharField(max_length=250)
+    task = models.ForeignKey(
+        Task, on_delete=models.CASCADE, related_name='subtasks')
+    is_completed = models.BooleanField(default=False)
+    completed_at = models.DateTimeField(null=True, blank=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ('order', 'created_at')
+        verbose_name = "Sub Task"
+        verbose_name_plural = "Sub Tasks"
+
+    def __str__(self):
+        return self.title

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from tasks.models import Task, Category
+from tasks.models import Task, Category, SubTask
 
 # Register your models here.
 
@@ -52,5 +52,23 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
+class SubTaskAdmin(admin.ModelAdmin):
+    """
+        Admin configuration for managing subtasks.
+    """
+
+    fields = ['title', 'task', ('is_completed', 'completed_at'), 'order',
+              ('created_at', 'updated_at')]
+    list_display = ['title', 'task', 'is_completed', 'completed_at']
+    search_fields = ('title', 'task__title', 'task__user__email')
+    ordering = ('-created_at', 'order')
+    list_filter = ('is_completed', 'task')
+    readonly_fields = (
+        'created_at',
+        'updated_at',
+    )
+
+
 admin.site.register(Task, CustomTaskAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(SubTask, SubTaskAdmin)
