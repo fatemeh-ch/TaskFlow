@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 from core.models import TimeStampedModel
 from tasks.choices import TaskStatus, TaskPriority
@@ -78,3 +79,11 @@ class SubTask(TimeStampedModel, models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if self.is_completed:
+            self.completed_at = timezone.now()
+        else:
+            self.completed_at = None
+
+        super().save(*args, **kwargs)

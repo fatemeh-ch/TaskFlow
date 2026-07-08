@@ -11,7 +11,7 @@ class CustomTaskAdmin(admin.ModelAdmin):
     """
 
     list_display = ['short_title', 'user',
-                    'category', 'status', 'priority']
+                    'category', 'status', 'priority', 'completed_at']
     fields = ('user',
               ('title', 'category'),
               'description',
