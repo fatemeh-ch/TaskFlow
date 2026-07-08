@@ -33,10 +33,18 @@ class Task(TimeStampedModel, models.Model):
     deadline = models.DateTimeField(blank=True, null=True)
     completed_at = models.DateTimeField(blank=True, null=True)
     category = models.ForeignKey(
-        'Category', on_delete=models.SET_NULL, null=True, related_name='tasks')
+        'Category', on_delete=models.SET_NULL, null=True, blank=True, related_name='tasks')
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+
+        if self.status == TaskStatus.COMPLETED:
+            self.completed_at = timezone.now()
+        else:
+            self.completed_at = None
+        super().save(*args, **kwargs)
 
 
 class Category(TimeStampedModel, models.Model):
