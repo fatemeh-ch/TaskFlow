@@ -1,0 +1,135 @@
+/* 
+==========================================
+   Global Base Styles
+==========================================
+ */
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  direction: rtl;
+
+  min-height: 100vh;
+
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+
+  overflow-x: hidden;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 
+==========================================
+   Typography
+==========================================
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+/* 
+==========================================
+   Links
+==========================================
+
+*/
+
+a {
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+/* 
+==========================================
+   Buttons
+========================================== */
+
+button {
+  transition: var(--transition-fast);
+}
+
+/* 
+==========================================
+   Forms
+==========================================
+ */
+
+input,
+textarea,
+button,
+select {
+  color: inherit;
+}
+
+/* 
+==========================================
+   Images
+==========================================
+ */
+
+img {
+  user-select: none;
+}
+
+/* 
+==========================================
+   Text Selection
+==========================================
+ */
+
+::selection {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+/* 
+==========================================
+   Scrollbar
+==========================================
+ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* 
+==========================================
+   Layout
+====================================
+======
+ */
+
+.container {
+  width: min(var(--container-width), 90%);
+  margin-inline: auto;
+}
