@@ -1,0 +1,141 @@
+:root {
+  /* ===========================
+       Colors
+    =========================== */
+
+  --color-primary: #22c55e;
+  --color-primary-hover: #16a34a;
+
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+
+  --color-border: #e2e8f0;
+
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+
+  --color-placeholder: #94a3b8;
+
+  --color-success: #15803d;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+
+  /* ===========================
+       Status Badge
+    =========================== */
+
+  --status-completed-bg: #dcfce7;
+  --status-completed-text: #15803d;
+
+  --status-progress-bg: #dbeafe;
+  --status-progress-text: #2563eb;
+
+  --status-pending-bg: #f1f5f9;
+  --status-pending-text: #475569;
+
+  /* ===========================
+       Priority Badge
+    =========================== */
+
+  --priority-high-bg: #fee2e2;
+  --priority-high-text: #dc2626;
+
+  --priority-medium-bg: #fef9c3;
+  --priority-medium-text: #d97706;
+
+  --priority-low-bg: #dcfce7;
+  --priority-low-text: #15803d;
+
+  /* ===========================
+       Category Badge
+    =========================== */
+
+  --category-study-bg: #dbeafe;
+  --category-study-text: #2563eb;
+
+  --category-work-bg: #dcfce7;
+  --category-work-text: #16a34a;
+
+  --category-personal-bg: #fce7f3;
+  --category-personal-text: #db2777;
+
+  --category-sport-bg: #ede9fe;
+  --category-sport-text: #7c3aed;
+
+  --category-shopping-bg: #fff7ed;
+  --category-shopping-text: #ea580c;
+
+  --category-default-bg: #f1f5f9;
+  --category-default-text: #475569;
+
+  /* ===========================
+       Typography
+    =========================== */
+
+  --font-primary: "Vazirmatn", sans-serif;
+
+  /* ===========================
+       Border Radius
+    =========================== */
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* ===========================
+       Shadows
+    =========================== */
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.05);
+
+  --shadow-md: 0 4px 6px rgb(0 0 0 / 0.08);
+
+  --shadow-lg: 0 10px 15px rgb(0 0 0 / 0.12);
+
+  /* ===========================
+       Transition
+    =========================== */
+
+  --transition: 0.25s ease-in-out;
+
+  /* ===========================
+       Layout
+    =========================== */
+
+  --container-width: 1280px;
+
+  /* ===========================
+   Z-index
+=========================== */
+
+  --z-dropdown: 100;
+  --z-sticky: 500;
+  --z-modal: 1000;
+  --z-toast: 1100;
+
+  /* ===========================
+   Spacing
+=========================== */
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  /* ===========================
+   Opacity
+=========================== */
+
+  --opacity-disabled: 0.5;
+
+  /* ===========================
+   Animation
+=========================== */
+
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.25s ease-in-out;
+  --transition-slow: 0.4s ease-in-out;
+}
