@@ -1,0 +1,107 @@
+/* ================================
+   Modern CSS Reset
+   ================================ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin & padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Prevent font size inflation */
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    scroll-behavior: smooth;
+}
+
+/* Core body defaults */
+body {
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Better heading readability */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+input,
+label {
+    line-height: 1.1;
+}
+
+/* Better text wrapping for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/* Remove list styles only when role="list" is used */
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Images */
+img,
+picture {
+    display: block;
+    max-width: 100%;
+}
+
+/* Form elements inherit typography */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+/* Textareas */
+textarea:not([rows]) {
+    min-height: 10rem;
+    resize: vertical;
+}
+
+/* SVG */
+svg {
+    display: block;
+}
+
+/* Better scroll position for anchors */
+:target {
+    scroll-margin-block: 5rem;
+}
