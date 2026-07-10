@@ -3,8 +3,9 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import FormView
 from django.contrib.auth import login
+from django.contrib import messages
 
-from accounts.forms import SignupForm , LoginForm
+from accounts.forms import SignupForm, LoginForm
 
 # Create your views here.
 
@@ -45,7 +46,7 @@ class SignupView(FormView):
 
     form_class = SignupForm
     template_name = 'accounts/signup.html'
-    # success_url = reverse_lazy('tasks:dashboard')
+    success_url = reverse_lazy('tasks:dashboard')
 
     def form_valid(self, form):
         """
@@ -56,5 +57,11 @@ class SignupView(FormView):
             and the standard success redirect is returned.
         """
         user = form.save()
+
         login(self.request, user)
+
+        messages.success(
+            self.request,
+            "حساب کاربری شما با موفقیت ایجاد شد. خوش آمدید"
+        )
         return super().form_valid(form)

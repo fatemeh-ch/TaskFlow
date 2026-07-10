@@ -1,15 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Signup</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ثبت نام{% endblock %}
+
+{% block content %}
+
+<section class="auth-page d-flex column-flex center">
+
+    <div class="wrapper-container d-flex column-flex">
+
+        <div class="wrapper-content d-flex column-flex">
+
+            {% include 'includes/auth_header.html' %}
+
+            <section class="form-box d-flex column-flex">
+
+                <!-- Form Header -->
+
+                <div class="form-header d-flex column-flex align-items-center">
+
+                    <h1 class="second-title">
+                        ایجاد حساب کاربری
+                    </h1>
+
+                    <p class="auth-subtitle">
+                        برای شروع، اطلاعات خود را وارد کنید
+                    </p>
+
+                </div>
+
+                <!-- Signup Form -->
+
+                <form method="post" class="auth-form d-flex column-flex">
+
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                    <div class="form-errors text-align-center">
+
+                        {% for error in form.non_field_errors %}
+
+                            {% if "too similar" in error %}
+                                <p>رمز عبور نباید شبیه اطلاعات شخصی شما باشد.</p>
+
+                            {% elif "too short" in error %}
+                                <p>رمز عبور باید حداقل ۸ کاراکتر باشد.</p>
+
+                            {% elif "too common" in error %}
+                                <p>رمز عبور انتخاب شده بسیار رایج است.</p>
+
+                            {% elif "entirely numeric" in error %}
+                                <p>رمز عبور نباید فقط شامل اعداد باشد.</p>
+
+                            {% else %}
+                                <p>{{ error }}</p>
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+                    {% endif %}
+
+                    <!-- Name -->
+
+                    <div class="form-group d-flex column-flex">
+
+                        <label for="{{ form.first_name.id_for_label }}">
+                            {{ form.first_name.label }}
+                        </label>
+
+                        {{ form.first_name }}
+
+                        {{ form.first_name.errors }}
+
+                    </div>
+
+                    <!-- Email -->
+
+                    <div class="form-group d-flex column-flex">
+
+                        <label for="{{ form.email.id_for_label }}">
+                            {{ form.email.label }}
+                        </label>
+
+                        {{ form.email }}
+
+                        {{ form.email.errors }}
+
+                    </div>
+
+                    <!-- Password -->
+
+                    <div class="form-group d-flex column-flex">
+
+                        <label for="{{ form.password1.id_for_label }}">
+                            {{ form.password1.label }}
+                        </label>
+
+                        {{ form.password1 }}
+
+                        {{ form.password1.errors }}
+
+                    </div>
+
+                    <!-- Confirm Password -->
+
+                    <div class="form-group d-flex column-flex">
+
+                        <label for="{{ form.password2.id_for_label }}">
+                            {{ form.password2.label }}
+                        </label>
+
+                        {{ form.password2 }}
+
+                        {{ form.password2.errors }}
+
+                    </div>
+
+                    <button type="submit" class="auth-btn">
+                        ثبت نام
+                    </button>
+
+                </form>
+
+                <!-- Divider -->
+
+                <section class="or d-flex text-align-center align-items-center">
+                    <span>یا</span>
+                </section>
+
+                <!-- Login Link -->
+
+                <p class="auth-link text-align-center">
+
+                    قبلاً حساب کاربری ساخته‌اید؟
+
+                    <a href="{% url 'accounts:login' %}">
+                        وارد شوید
+                    </a>
+
+                </p>
+
+            </section>
+
+        </div>
+
+        {% include 'includes/auth_footer.html' %}
+
+    </div>
+
+</section>
+
+{% endblock %}
