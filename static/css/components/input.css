@@ -1,0 +1,24 @@
+/* Form Inputs */
+
+.form-control {
+  width: 100%;
+  border: 2px solid var(--color-border);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  -webkit-border-radius: var(--radius-md);
+  -moz-border-radius: var(--radius-md);
+  -ms-border-radius: var(--radius-md);
+  -o-border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+}
+
+.form-control::placeholder {
+    color: var(--color-placeholder);
+    border-color: var(--color-primary);
+}
+
+.form-control:focus {
+  outline: none;
+  background-color: var(--color-surface);
+}
