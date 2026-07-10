@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import FormView
 from django.contrib.auth import login
 
-from accounts.forms import SignupForm
+from accounts.forms import SignupForm , LoginForm
 
 # Create your views here.
 
@@ -19,7 +19,8 @@ class CustomLoginView(LoginView):
     """
 
     template_name = 'accounts/login.html'
-    redirect_authenticated_user = True
+    authentication_form = LoginForm
+    # redirect_authenticated_user = True
 
 
 class CustomLogoutView(LogoutView):
