@@ -1,0 +1,17 @@
+.auth-btn{
+    width: 100%;
+    background-color: var(--status-completed-text);
+    padding: 0.8rem;
+    color: var(--color-surface);
+    font-size: var(--space-md);
+    border-radius: var(--radius-md);
+    -webkit-border-radius: var(--radius-md);
+    -moz-border-radius: var(--radius-md);
+    -ms-border-radius: var(--radius-md);
+    -o-border-radius: var(--radius-md);
+    margin-top: var(--space-md);
+}
+
+.auth-btn:hover{
+    background-color: var(--color-primary-hover);
+}
