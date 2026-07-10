@@ -1,15 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ورود{% endblock %}
+
+{% block content %}
+
+<section class="auth-page d-flex column-flex center">
+
+    <div class="wrapper-container d-felx column-flex">
+
+        <div class="wrapper-content d-flex column-flex">
+            {% include 'includes/auth_header.html' %}
+
+            <section class="form-box d-flex column-flex">
+
+                <!-- Form Header -->
+                <div class="form-header d-flex column-flex justify-content-center text-align-center">
+                    <h2 class="second-title">ورود به حساب کاربری</h2>
+                    <p class="auth-subtitle">
+                        برای ادامه، ایمیل و رمز عبور خود را وارد کنید
+                </div>
+
+                <!-- Login Form -->
+                <form method="post" class="auth-form d-flex column-flex">
+
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                    <div class="form-errors text-align-center">
+                        {{ form.non_field_errors }}
+                    </div>
+                    {% endif %}
+
+                    <!-- Email Field -->
+                    <div class="form-group d-flex column-flex">
+
+                        <label for="{{ form.username.id_for_label }}">
+                            {{ form.username.label }}
+                        </label>
+
+                        {{ form.username }}
+
+                        {{ form.username.errors }}
+
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group d-flex column-flex">
+
+                        <label for="{{ form.password.id_for_label }}">
+                            {{ form.password.label }}
+                        </label>
+
+                        {{ form.password }}
+
+                        {{ form.password.errors }}
+
+                    </div>
+
+                    <!-- Remember Me -->
+                    <section class="remember-me d-flex justify-space-between align-items-center">
+
+                        <a href="#">
+                            رمز عبور خود را فراموش کرده‌اید؟
+                        </a>
+
+                        <label class="d-flex center">
+
+                            <input type="checkbox" name="remember_me">
+
+                            مرا به خاطر بسپار
+
+                        </label>
+
+                    </section>
+
+                    <button type="submit" class="auth-btn">
+                        ورود
+                    </button>
+
+                </form>
+
+                <!-- OR -->
+                <section class="or d-flex text-align-center align-items-center">
+                    <span>یا</span>
+                </section>
+
+                <!-- Sign up -->
+                <p class="auth-link text-align-center">
+                    حساب کاربری ندارید؟
+                    <a href="{% url 'accounts:signup' %}">
+                        ثبت نام کنید
+                    </a>
+                </p>
+
+            </section>
+        </div>
+
+        {% include 'includes/auth_footer.html' %}
+    </div>
+
+</section>
+
+{% endblock %}
