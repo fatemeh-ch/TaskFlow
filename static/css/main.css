@@ -5,10 +5,13 @@
 @import url("./base/base.css");
 @import url("./base/utilities.css");
 
-/*Pages*/
-@import url("./pages/auth.css");
-
 
 /* Components */
 @import url("./components/input.css");
 @import url("./components/button.css");
+
+
+/*Pages*/
+@import url("./pages/auth.css");
+
+

@@ -84,7 +84,7 @@
 
 .form-errors {
   color: var(--color-danger);
-  font-size: 0.9rem;
+  font-size: var(--base-font-size);
 }
 
 .auth-link a {
@@ -96,7 +96,7 @@
 
 .remember-me {
   margin-top: var(--space-md);
-  font-size: 0.9rem;
+  font-size: var(--base-font-size);
 }
 
 .remember-me a {
@@ -112,8 +112,8 @@
   -o-transition: var(--transition-slow);
 }
 
-.remember-me input{
-    margin-left: 0.5rem;
+.remember-me input {
+  margin-left: 0.5rem;
 }
 /* Divider */
 
@@ -157,6 +157,99 @@
   bottom: 0;
   transform: translateX(-50%);
   color: var(--color-text-secondary);
-  font-size: 0.9rem;
+  font-size: var(--base-font-size);
   white-space: nowrap;
+}
+
+/*
+=================
+Responsive Design
+=================
+*/
+
+@media screen and (max-width: 1045px) {
+  .remember-me {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 987px) {
+  .wrapper-content {
+    padding: var(--space-lg);
+  }
+
+  .form-box {
+    padding: var(--space-lg);
+  }
+
+  .second-title {
+    margin-bottom: var(--space-sm);
+    font-size: 1.2rem;
+  }
+
+  .auth-subtitle {
+    font-size: var(--base-font-size);
+  }
+
+  .form-box label {
+    line-height: 2.5;
+    font-size: var(--base-font-size);
+  }
+
+  .auth-link {
+    font-size: var(--base-font-size);
+  }
+}
+
+@media screen and (max-width: 805px) {
+  .remember-me {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .auth-btn {
+    padding: 0.6rem !important;
+  }
+}
+
+@media screen and (max-width: 778px) {
+  .wrapper-container {
+    width: min(70%, 700px);
+  }
+
+  .remember-me {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 612px) {
+  .remember-me {
+    flex-direction: column;
+  }
+
+  .auth-btn {
+    padding: 0.5rem !important;
+  }
+}
+
+@media screen and (max-width: 536px) {
+  .wrapper-container {
+    width: min(90%, 700px);
+  }
+
+  .remember-me {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 488px) {
+  .remember-me {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .wrapper-container {
+    width: min(100%, 800px);
+  }
 }
