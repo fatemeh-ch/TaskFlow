@@ -1,0 +1,56 @@
+{% load static %}
+
+<!-- Header -->
+
+<header class="dashboard-header d-flex align-items-center justify-space-between">
+
+    <!-- Logout -->
+
+    <form method="Post" action="{% url 'accounts:logout' %}">
+        <button type=" submit" value="logout" class="logout-btn d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-log-out-icon lucide-log-out">
+            <path d="m16 17 5-5-5-5" />
+            <path d="M21 12H9" />
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+        </svg>
+            خروج
+        </button>
+    </form>
+
+    <!-- Profile -->
+    <section class="profile d-flex align-items-center">
+        <div class="user-name d-flex align-items-center">
+            <p class="user-full-name">فاطمه احمدی</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-chevron-down-icon lucide-chevron-down">
+                <path d="m6 9 6 6 6-6" />
+            </svg>
+        </div>
+        <img src="{% static 'images/default_user.png' %}" alt="user-avatar">
+    </section>
+
+    <!-- Search Box -->
+    <section class="search d-flex position-relative">
+        <form method="get" class="d-flex">
+            <input type="text" name="search" placeholder="جستجوی تسک ..." class="searchbox-inpt">
+            <button class="position-absolute search-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-search-icon lucide-search">
+                    <path d="m21 21-4.34-4.34" />
+                    <circle cx="11" cy="11" r="8" />
+                </svg>
+            </button>
+        </form>
+    </section>
+
+    <!-- Logo -->
+     <section class="dashboard-logo d-flex align-items-center">
+        <h1>TaskFlow</h1>
+        <img src="{% static 'images/main_logo.png' %}" alt="taskflow">
+     </section>
+
+</header>

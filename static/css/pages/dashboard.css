@@ -1,0 +1,45 @@
+/* Header */
+
+.dashboard-header {
+  background-color: var(--color-surface);
+  height: min(20%, 250px);
+  padding: 1rem 2rem;
+  gap: var(--space-lg);
+}
+
+/* Header - Profile */
+
+.profile img {
+  width: var(--space-lg-1);
+  height: var(--space-lg-1);
+  margin-right: var(--space-sm);
+}
+
+.user-full-name {
+  font-size: var(--base-font-size);
+}
+
+/* Header - Logo */
+
+.dashboard-logo img {
+  width: var(--space-xl);
+  margin-right: var(--space-sm);
+}
+
+.dashboard-logo h1 {
+  color: var(--color-primary);
+  font-size: var(--space-md);
+}
+
+/* Header - Searchbox */
+
+.search {
+  flex: 1;
+  margin: 0 var(--space-xl);
+  max-width: 600px;
+  min-width: 220px;
+}
+
+.search form {
+  width: 100%;
+}

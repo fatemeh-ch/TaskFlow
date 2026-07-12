@@ -1,3 +1,5 @@
+/* Authentication btn */
+
 .auth-btn{
     width: 100%;
     background-color: var(--status-completed-text);
@@ -14,4 +16,35 @@
 
 .auth-btn:hover{
     background-color: var(--color-primary-hover);
+}
+
+/* Logout btn */
+
+.logout-btn{
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    padding: 0.4rem 0.7rem;
+    font-size: var(--base-font-size);
+    border-radius: var(--space-sm);
+    -webkit-border-radius: var(--space-sm);
+    -moz-border-radius: var(--space-sm);
+    -ms-border-radius: var(--space-sm);
+    -o-border-radius: var(--space-sm);
+}
+
+.logout-btn:hover{
+    background-color: var(--color-primary-hover);
+}
+
+/* Search Icon */
+
+.search-btn{
+    left:1rem;
+    top:50%;
+    transform:translateY(-50%);
+    color: var(--color-placeholder);
+}
+
+.search-btn:hover{
+    color: var(--color-text-secondary);
 }

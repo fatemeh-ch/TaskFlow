@@ -14,11 +14,43 @@
 }
 
 .form-control::placeholder {
-    color: var(--color-placeholder);
-    border-color: var(--color-primary);
+  color: var(--color-placeholder);
+  border-color: var(--color-primary);
 }
 
 .form-control:focus {
   outline: none;
   background-color: var(--color-surface);
+}
+
+/* Searchbox input */
+
+.searchbox-inpt {
+  background-color: none;
+  width: 100%;
+  padding: 0.4rem 3rem 0.3rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  -webkit-border-radius: var(--radius-lg);
+  -moz-border-radius: var(--radius-lg);
+  -ms-border-radius: var(--radius-lg);
+  -o-border-radius: var(--radius-lg);
+}
+
+.searchbox-inpt:hover {
+  background-color: var(--color-background);
+  transition: var(--transition-normal);
+  -webkit-transition: var(--transition-normal);
+  -moz-transition: var(--transition-normal);
+  -ms-transition: var(--transition-normal);
+  -o-transition: var(--transition-normal);
+}
+
+.searchbox-inpt:focus {
+  outline: none;
+  background-color: var(--color-background);
+}
+
+.searchbox-inpt::placeholder {
+  font-size: var(--base-font-size);
 }

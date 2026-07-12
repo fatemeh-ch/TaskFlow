@@ -21,7 +21,7 @@ class CustomLoginView(LoginView):
 
     template_name = 'accounts/login.html'
     authentication_form = LoginForm
-    # redirect_authenticated_user = True
+    redirect_authenticated_user = True
 
 
 class CustomLogoutView(LogoutView):
