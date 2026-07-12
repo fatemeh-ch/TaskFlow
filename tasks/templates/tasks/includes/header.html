@@ -7,6 +7,9 @@
     <!-- Logout -->
 
     <form method="Post" action="{% url 'accounts:logout' %}">
+
+        {% csrf_token %}
+        
         <button type=" submit" value="logout" class="logout-btn d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

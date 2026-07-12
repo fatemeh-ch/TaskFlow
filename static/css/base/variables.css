@@ -51,11 +51,11 @@
        Category Badge
     =========================== */
 
-  --category-study-bg: #dbeafe;
-  --category-study-text: #2563eb;
+  --category-work-bg: #dbeafe;
+  --category-work-text: #2563eb;
 
-  --category-work-bg: #dcfce7;
-  --category-work-text: #16a34a;
+  --category-study-bg: #dcfce7;
+  --category-study-text: #16a34a;
 
   --category-personal-bg: #fce7f3;
   --category-personal-text: #db2777;
@@ -140,7 +140,7 @@
   --transition-normal: 0.25s ease-in-out;
   --transition-slow: 0.4s ease-in-out;
 
-/* Font sizes*/
+  /* Font sizes*/
 
-  --base-font-size:0.9rem;
+  --base-font-size: 0.9rem;
 }

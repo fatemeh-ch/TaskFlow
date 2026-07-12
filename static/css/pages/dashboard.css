@@ -43,3 +43,108 @@
 .search form {
   width: 100%;
 }
+
+/* Main Container */
+
+.main-container {
+  padding: 2rem;
+}
+
+/* Main Container - Welcome section */
+
+.lucide-calendar-days-icon {
+  color: var(--color-primary);
+  margin-right: var(--space-lg);
+}
+
+.detail {
+  font-size: 0.8rem;
+  line-height: 2.1;
+}
+
+.greet h2 {
+  font-size: 1.2rem;
+  padding-bottom: var(--space-md);
+  font-weight: 400;
+}
+
+.greet p {
+  font-size: var(--base-font-size);
+}
+
+/* Main Content */
+
+.dashboard-main-content {
+  margin-top: var(--space-lg);
+}
+
+/* Main Content - Side Bar */
+
+.sidebar {
+  width: 20%;
+}
+
+/* Main Content - Side Bar - Category */
+
+.category {
+  margin-bottom: var(--space-lg);
+}
+
+.category h3,
+.priority h3 {
+  font-weight: 400;
+  font-size: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.item {
+  margin-bottom: var(--radius-md);
+  font-size: var(--base-font-size);
+}
+
+.item-count {
+  font-size: var(--radius-md);
+  width: var(--space-lg);
+  height: var(--space-lg);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.category .all {
+  background-color: var(--color-border);
+}
+
+.category .education {
+  background-color: var(--category-study-bg);
+  color: var(--category-study-text);
+}
+
+.category .personal {
+  background-color: var(--category-personal-bg);
+  color: var(--category-personal-text);
+}
+
+.category .work {
+  background-color: var(--category-work-bg);
+  color: var(--category-work-text);
+}
+
+/* Main Content - Side Bar - Priority */
+
+.priority .high-p {
+  background-color: var(--priority-high-bg);
+  color: var(--priority-high-text);
+}
+
+.priority .mid-p {
+  background-color: var(--priority-medium-bg);
+  color: var(--priority-medium-text);
+}
+
+.priority .low-p {
+  background-color: var(--priority-low-bg);
+  color: var(--priority-low-text);
+}
