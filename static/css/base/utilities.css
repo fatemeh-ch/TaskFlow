@@ -18,6 +18,10 @@
   justify-content: space-between;
 }
 
+.align-end{
+  align-items: flex-end;
+}
+
 .center {
   justify-content: center;
   align-items: center;
@@ -41,4 +45,8 @@
 
 .position-relative{
   position: relative;
+}
+
+.d-grid{
+  display: grid;
 }

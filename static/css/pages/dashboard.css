@@ -1,6 +1,7 @@
 /* Header */
 
-.dashboard-header {
+.dashboard-header,
+.footer {
   background-color: var(--color-surface);
   height: min(20%, 250px);
   padding: 1rem 2rem;
@@ -76,13 +77,10 @@
 
 .dashboard-main-content {
   margin-top: var(--space-lg);
+  grid-template-columns: 20% 80%;
 }
 
 /* Main Content - Side Bar */
-
-.sidebar {
-  width: 20%;
-}
 
 /* Main Content - Side Bar - Category */
 
@@ -95,6 +93,20 @@
   font-weight: 400;
   font-size: var(--space-md);
   margin-bottom: var(--space-md);
+  margin-right: var(--radius-md);
+}
+
+.lucide-folder-icon {
+  color: var(--category-shopping-text);
+}
+
+.lucide-flag-icon {
+  color: var(--category-personal-text);
+}
+
+.category a:hover .item,
+.priority a:hover .item {
+  color: var(--priority-low-text);
 }
 
 .item {
@@ -147,4 +159,265 @@
 .priority .low-p {
   background-color: var(--priority-low-bg);
   color: var(--priority-low-text);
+}
+
+/* Main Content */
+
+.main-content {
+  grid-template-areas:
+    "task-status task-status"
+    "filters filters"
+    "tasks-information tasks-information";
+  margin-right: var(--space-lg);
+  row-gap: var(--radius-xl);
+}
+
+/* Progress Bar */
+
+.task-status {
+  grid-template-columns: repeat(2, 1fr);
+  grid-area: task-status;
+  column-gap: var(--radius-lg);
+}
+
+.task-info {
+  row-gap: var(--radius-lg);
+}
+
+.progress-bar {
+  gap: var(--space-xl);
+}
+
+.lucide-chart-no-axes-combined-icon,
+.lucide-clock-icon {
+  color: var(--color-primary);
+}
+
+.progress-bar .top p,
+.upcoming-task p {
+  color: var(--color-text-primary);
+  font-size: var(--base-font-size);
+  margin-right: var(--space-lg);
+}
+
+.progress {
+  width: 100%;
+  height: 12px;
+  background: var(--color-surface);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  -webkit-border-radius: var(--radius-xl);
+  -moz-border-radius: var(--radius-xl);
+  -ms-border-radius: var(--radius-xl);
+  -o-border-radius: var(--radius-xl);
+}
+
+.progress-fill {
+  height: 100%;
+  width: 60%;
+  background: var(--color-primary);
+  border-radius: 999px;
+  transition: 0.3s;
+}
+
+/* Task status - Upcoming Tasks - Task Details */
+
+.task-details p:first-child {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+/* Task filters */
+
+.task-filters {
+  grid-area: filters;
+  gap: var(--radius-xl);
+}
+
+.task-filters a:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+  transition: var(--transition-fast);
+  -webkit-transition: var(--transition-fast);
+  -moz-transition: var(--transition-fast);
+  -ms-transition: var(--transition-fast);
+  -o-transition: var(--transition-fast);
+}
+
+.task-filters .filter-item {
+  height: fit-content;
+  padding: 0.7rem 2rem;
+  width: fit-content;
+}
+
+.task-filters button {
+  height: fit-content;
+  padding: 0.7rem;
+}
+
+.dashboard-btn a {
+  margin-right: 0.5rem;
+}
+
+.task-filters .filter-item p {
+  color: var(--color-text-primary);
+  margin: 0 0.5rem;
+  font-size: var(--base-font-size);
+  white-space: nowrap;
+}
+
+.lucide-grid2x2-icon {
+  color: var(--color-info);
+}
+
+.lucide-clock3-icon {
+  color: var(--color-placeholder);
+}
+
+.lucide-star-icon {
+  color: var(--color-warning);
+}
+
+.lucide-calendar-check-icon {
+  color: var(--category-personal-text);
+}
+
+.lucide-ellipsis-icon {
+  color: var(--color-danger);
+}
+
+/* Tasks Information and Details */
+
+.tasks-information {
+  padding: 1rem 0;
+  grid-area: tasks-information;
+}
+
+.task-information {
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 3rem;
+  gap: 2.5rem;
+}
+
+.task-information:last-child {
+  border-bottom: none;
+}
+
+.task-information:not(:first-child) {
+  padding: 2rem 3rem 1rem;
+}
+
+.task-description {
+  gap: var(--space-lg);
+}
+
+.task-description h4 {
+  font-weight: 450;
+}
+
+.task-description h4:hover {
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+  -webkit-transition: var(--transition-fast);
+  -moz-transition: var(--transition-fast);
+  -ms-transition: var(--transition-fast);
+  -o-transition: var(--transition-fast);
+}
+
+.task-description p {
+  font-weight: 300;
+  font-size: var(--base-font-size);
+}
+
+/* Task Priority */
+
+.task-priority,
+.task-statement,
+.task-deadline {
+  padding: 0.3rem 1.5rem;
+  height: fit-content;
+  border-radius: var(--radius-md);
+  -webkit-border-radius: var(--radius-md);
+  -moz-border-radius: var(--radius-md);
+  -ms-border-radius: var(--radius-md);
+  -o-border-radius: var(--radius-md);
+}
+
+.task-priority p,
+.task-statement p,
+.task-deadline p {
+  margin-right: var(--space-md);
+  font-weight: 300;
+  font-size: var(--base-font-size);
+}
+
+.task-statement p {
+  margin-right: 0 !important;
+}
+
+/* Low Priority Task */
+.low-priority-text {
+  color: var(--priority-low-text);
+}
+
+.low-priority {
+  background-color: var(--priority-low-bg);
+}
+
+/* Medium Priority Task */
+.priority-medium-text {
+  color: var(--priority-medium-text);
+}
+
+.medium-priority {
+  background-color: var(--priority-medium-bg);
+}
+
+/* High Priority Task */
+.priority-high-text {
+  color: var(--priority-high-text);
+}
+
+.high-priority {
+  background-color: var(--priority-high-bg);
+}
+
+/* Task Statement */
+
+.task-statement {
+  background-color: azure;
+}
+
+.pending-status {
+  background-color: var(--status-pending-bg);
+}
+
+.pending-status-text {
+  color: var(--status-pending-text);
+}
+
+.lucide-star-icon {
+  fill: var(--color-warning);
+}
+
+.completed-status {
+  background-color: var(--status-completed-bg);
+}
+
+.completed-status-text {
+  color: var(--status-completed-text);
+}
+
+/* Task Dealine */
+
+.task-deadline {
+  background-color: var(--status-progress-bg);
+}
+
+.lucide-calendar-fold-icon {
+  color: var(--status-pending-text);
 }

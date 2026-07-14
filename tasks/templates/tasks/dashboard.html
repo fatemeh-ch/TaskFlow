@@ -48,79 +48,372 @@
     </section>
 
     <!-- Main Content -->
-    <div class="dashboard-main-content d-flex align-items-center">
+    <div class="dashboard-main-content d-grid">
 
         <!-- Side Bar -->
         <aside class="sidebar d-flex column-flex">
 
             <!-- Category -->
             <div class="category d-flex column-flex card">
-                <h3>دسته بندی</h3>
+                <div class="category-info d-flex ">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-folder-icon lucide-folder">
+                        <path
+                            d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
+                    </svg>
 
-                <div class="item d-flex justify-space-between align-items-center">
-                    همه
-                    <div class="item-count all d-flex align-items-center justify-content-center">
-                        10
-                    </div>
+                    <h3>دسته بندی</h3>
                 </div>
 
-                <div class="item d-flex justify-space-between align-items-center">
-                    مطالعه
-                    <div class="item-count education d-flex align-items-center justify-content-center">
-                        5
+                <a href="#">
+                    <div class="item d-flex justify-space-between align-items-center">
+                        همه
+                        <div class="item-count all d-flex align-items-center justify-content-center">
+                            10
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="item d-flex justify-space-between align-items-center">
-                    شخصی
-                    <div class="item-count personal d-flex align-items-center justify-content-center">
-                        2
+                <a href="#">
+                    <div class="item d-flex justify-space-between align-items-center">
+                        مطالعه
+                        <div class="item-count education d-flex align-items-center justify-content-center">
+                            5
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="item d-flex justify-space-between align-items-center">
-                    کار
-                    <div class="item-count work d-flex align-items-center justify-content-center">
-                        3
+                <a href="#">
+                    <div class="item d-flex justify-space-between align-items-center">
+                        شخصی
+                        <div class="item-count personal d-flex align-items-center justify-content-center">
+                            2
+                        </div>
                     </div>
-                </div>
+                </a>
+
+                <a href="#">
+                    <div class="item d-flex justify-space-between align-items-center">
+                        کار
+                        <div class="item-count work d-flex align-items-center justify-content-center">
+                            3
+                        </div>
+                    </div>
+                </a>
             </div>
 
             <!-- Task Priority -->
             <div class="priority d-flex column-flex card">
-                <h3>اولویت</h3>
 
-                <div class="item d-flex justify-space-between align-items-center">
-                    زیاد
-                    <div class="item-count high-p d-flex align-items-center justify-content-center">
-                        1
-                    </div>
+                <div class="priority-info d-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-flag-icon lucide-flag">
+                        <path
+                            d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" />
+                    </svg>
+                    <h3>اولویت</h3>
                 </div>
 
-                <div class="item d-flex justify-space-between align-items-center">
-                    متوسط
-                    <div class="item-count mid-p d-flex align-items-center justify-content-center">
-                        2
+                <a href="#">
+                    <div class="item d-flex justify-space-between align-items-center">
+                        زیاد
+                        <div class="item-count high-p d-flex align-items-center justify-content-center">
+                            1
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="item d-flex justify-space-between align-items-center">
-                    کم
-                    <div class="item-count low-p d-flex align-items-center justify-content-center">
-                        0
+                <a href="#">
+                    <div class="item d-flex justify-space-between align-items-center">
+                        متوسط
+                        <div class="item-count mid-p d-flex align-items-center justify-content-center">
+                            2
+                        </div>
                     </div>
-                </div>
+                </a>
+
+                <a href="#">
+                    <div class="item d-flex justify-space-between align-items-center">
+                        کم
+                        <div class="item-count low-p d-flex align-items-center justify-content-center">
+                            0
+                        </div>
+                    </div>
+                </a>
             </div>
         </aside>
 
         <!-- Main content -->
-        <div class="main-content">
+        <div class="main-content d-grid">
 
+            <!-- Task status - Progress Bar and Detail -->
+            <section class="task-status d-grid">
+
+                <!-- Progress Bar -->
+
+                <div class="progress-bar card d-flex column-flex">
+                    <div class="top d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chart-no-axes-combined-icon lucide-chart-no-axes-combined">
+                            <path d="M12 16v5" />
+                            <path d="M16 14.639V21" />
+                            <path d="M20 10.656V21" />
+                            <path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15" />
+                            <path d="M4 18.463V21" />
+                            <path d="M8 14.656V21" />
+                        </svg>
+                        <p>پیشرفت امروز</p>
+                    </div>
+                    <div class="progress-container d-flex">
+                        <div class="progress d-flex">
+                            <div class="progress-fill" style="width:60%;"></div>
+                        </div>
+                        <label>60%</label>
+                    </div>
+                    <p>از 5 تسک برنامه ریزی شده</p>
+                </div>
+
+                <!-- Tasks Information -->
+                <div class="task-info card d-grid">
+                    <div class="upcoming-task d-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-clock-icon lucide-clock">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+
+                        <p>نزدیک ترین تسک</p>
+                    </div>
+                    <div class="task-details d-flex column-flex align-end">
+                        <p>Django Rest API</p>
+                        <p>امروز - ساعت 6</p>
+                    </div>
+                    <div class="progress-container d-flex">
+                        <div class="progress d-flex">
+                            <div class="progress-fill" style="width:60%;"></div>
+                        </div>
+
+                    </div>
+                    <button class="continue-btn">
+                        <a href="#">ادامه کار</a>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Task Filters -->
+            <section class="task-filters d-flex center">
+
+                <!-- Filter Item -All- -->
+                <a href="#">
+                    <div class="filter-item card d-flex center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-grid2x2-icon lucide-grid-2x2">
+                            <path d="M12 3v18" />
+                            <path d="M3 12h18" />
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                        </svg>
+
+                        <p>همه</p>
+                    </div>
+                </a>
+
+                <!-- Filter Item -incomplete- -->
+                <a href="#">
+                    <div class="filter-item card d-flex center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-ellipsis-icon lucide-ellipsis">
+                            <circle cx="12" cy="12" r="1" />
+                            <circle cx="19" cy="12" r="1" />
+                            <circle cx="5" cy="12" r="1" />
+                        </svg>
+                        <p>نا تمام</p>
+                    </div>
+                </a>
+
+
+                <!-- Filter Item -Incomplete- -->
+                <a href="#">
+                    <div class="filter-item card d-flex center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-clock3-icon lucide-clock-3">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6h4" />
+                        </svg>
+
+                        <p>معوق</p>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- Filter Item -Important- -->
+                <a href="#">
+                    <div class="filter-item card d-flex center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-star-icon lucide-star">
+                            <path
+                                d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+                        </svg>
+
+                        <p>مهم</p>
+
+                    </div>
+                </a>
+
+                <!-- Filter Item -Today- -->
+                <a href="#">
+                    <div class="filter-item card d-flex center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-calendar-check-icon lucide-calendar-check">
+                            <path d="M8 2v4" />
+                            <path d="M16 2v4" />
+                            <rect width="18" height="18" x="3" y="4" rx="2" />
+                            <path d="M3 10h18" />
+                            <path d="m9 16 2 2 4-4" />
+                        </svg>
+
+                        <p>امروز</p>
+                    </div>
+                </a>
+
+                <!-- New Task -->
+                <button class="dashboard-btn d-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-plus-icon lucide-plus">
+                        <path d="M5 12h14" />
+                        <path d="M12 5v14" />
+                    </svg>
+                    <a href="#">افزودن</a>
+                </button>
+            </section>
+
+            <!-- Tasks Information & Details -->
+            <section class="tasks-information d-flex column-flex card">
+
+                <!-- Task Information -->
+                <div class="task-information d-flex justify-space-between align-items-center">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-star-icon lucide-star">
+                        <path
+                            d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+                    </svg>
+
+                    <!-- Task Description -->
+                    <div class="task-description d-flex column-flex">
+                        <a href="#">
+                            <h4>یاد گیری فصل اول جنگو</h4>
+                        </a>
+                        <p>طراحی یک api کاربردی</p>
+                    </div>
+
+                    <!-- Task Priority -->
+                    <div class="task-priority high-priority d-flex center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-flag-icon lucide-flag">
+                            <path
+                                d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" />
+                        </svg>
+
+                        <p class="priority-high-text">زیاد</p>
+                    </div>
+
+                    <!-- Task Status -->
+                    <div class="task-statement pending-status d-flex justify-space-between">
+                        <p class="pending-status-text">در حال انجام</p>
+                    </div>
+
+                    <!-- Task Deadline -->
+                    <div class="task-deadline d-flex justify-space-between align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-calendar-fold-icon lucide-calendar-fold">
+                            <path
+                                d="M3 20a2 2 0 0 0 2 2h10a2.4 2.4 0 0 0 1.706-.706l3.588-3.588A2.4 2.4 0 0 0 21 16V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z" />
+                            <path d="M15 22v-5a1 1 0 0 1 1-1h5" />
+                            <path d="M8 2v4" />
+                            <path d="M16 2v4" />
+                            <path d="M3 10h18" />
+                        </svg>
+                        <p class="deadline-text">فردا</p>
+                    </div>
+                </div>
+
+                <!-- Task Information -->
+                <div class="task-information d-flex justify-space-between align-items-center">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-star-icon lucide-star">
+                        <path
+                            d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+                    </svg>
+
+                    <!-- Task Description -->
+                    <div class="task-description d-flex column-flex">
+                        <a href="#">
+                            <h4>یاد گیری پستگرس</h4>
+                        </a>
+                        <p>طراحی DML</p>
+                    </div>
+
+                    <!-- Task Priority -->
+                    <div class="task-priority medium-priority d-flex center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-flag-icon lucide-flag">
+                            <path
+                                d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" />
+                        </svg>
+
+                        <p class="priority-medium-text">متوسط</p>
+                    </div>
+
+                    <!-- Task Status -->
+                    <div class="task-statement completed-status d-flex justify-space-between">
+                        <p class="pcompleted-status-text"> انجام شده</p>
+                    </div>
+
+                    <!-- Task Deadline -->
+                    <div class="task-deadline d-flex justify-space-between align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-calendar-fold-icon lucide-calendar-fold">
+                            <path
+                                d="M3 20a2 2 0 0 0 2 2h10a2.4 2.4 0 0 0 1.706-.706l3.588-3.588A2.4 2.4 0 0 0 21 16V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z" />
+                            <path d="M15 22v-5a1 1 0 0 1 1-1h5" />
+                            <path d="M8 2v4" />
+                            <path d="M16 2v4" />
+                            <path d="M3 10h18" />
+                        </svg>
+                        <p class="deadline-text">فردا</p>
+                    </div>
+                </div>
+            </section>
         </div>
+
 
 
     </div>
 </div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="pagination">
+
+    </div>
+</footer>
 
 {% endblock %}
 
