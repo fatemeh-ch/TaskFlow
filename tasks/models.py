@@ -41,9 +41,11 @@ class Task(TimeStampedModel, models.Model):
     def save(self, *args, **kwargs):
 
         if self.status == TaskStatus.COMPLETED:
-            self.completed_at = timezone.now()
+            if self.completed_at is None:
+                self.completed_at = timezone.now()
         else:
             self.completed_at = None
+
         super().save(*args, **kwargs)
 
 
@@ -62,7 +64,7 @@ class Category(TimeStampedModel, models.Model):
 
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(unique=True)
-    icon = models.CharField(max_length=150)
+    icon = models.CharField(max_length=150, blank=True)
 
     def __str__(self):
         return self.title

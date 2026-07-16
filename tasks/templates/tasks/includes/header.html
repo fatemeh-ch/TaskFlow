@@ -9,15 +9,15 @@
     <form method="Post" action="{% url 'accounts:logout' %}">
 
         {% csrf_token %}
-        
+
         <button type=" submit" value="logout" class="logout-btn d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="lucide lucide-log-out-icon lucide-log-out">
-            <path d="m16 17 5-5-5-5" />
-            <path d="M21 12H9" />
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-        </svg>
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-log-out-icon lucide-log-out">
+                <path d="m16 17 5-5-5-5" />
+                <path d="M21 12H9" />
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            </svg>
             خروج
         </button>
     </form>
@@ -25,14 +25,23 @@
     <!-- Profile -->
     <section class="profile d-flex align-items-center">
         <div class="user-name d-flex align-items-center">
-            <p class="user-full-name">فاطمه احمدی</p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24" fill="none"
+            <p class="user-full-name">{{request.user.get_full_name}}</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"
                 class="lucide lucide-chevron-down-icon lucide-chevron-down">
                 <path d="m6 9 6 6 6-6" />
             </svg>
         </div>
-        <img src="{% static 'images/default_user.png' %}" alt="user-avatar">
+
+        {% if request.user.profile.avatar %}
+        
+            <img src="{{ request.user.profile.avatar.url }}" alt="user-avatar">
+
+        {% else %}
+
+            <img src="{% static 'images/default_user.png' %}" alt="user-avatar">
+
+        {% endif %}
     </section>
 
     <!-- Search Box -->
@@ -51,9 +60,9 @@
     </section>
 
     <!-- Logo -->
-     <section class="dashboard-logo d-flex align-items-center">
+    <section class="dashboard-logo d-flex align-items-center">
         <h1>TaskFlow</h1>
         <img src="{% static 'images/main_logo.png' %}" alt="taskflow">
-     </section>
+    </section>
 
 </header>

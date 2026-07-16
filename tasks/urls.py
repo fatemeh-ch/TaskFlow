@@ -1,5 +1,5 @@
 from django.urls import path, include
-from tasks.views import *
+from tasks.views import TaskListView
 
 app_name = 'tasks'
 
