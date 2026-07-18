@@ -35,11 +35,11 @@
 
         {% if request.user.profile.avatar %}
         
-            <img src="{{ request.user.profile.avatar.url }}" alt="user-avatar">
+            <img src="{{ request.user.profile.avatar.url }}" alt="user-avatar" class="profile-picture">
 
         {% else %}
 
-            <img src="{% static 'images/default_user.png' %}" alt="user-avatar">
+            <img src="{% static 'images/default_user.png' %}" alt="user-avatar" class="profile-picture">
 
         {% endif %}
     </section>

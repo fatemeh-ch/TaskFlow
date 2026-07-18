@@ -1,0 +1,78 @@
+/* Side Bar */
+
+.category {
+  margin-bottom: var(--space-lg);
+}
+
+.category h3,
+.priority h3 {
+  font-weight: 400;
+  font-size: var(--space-md);
+  margin-bottom: var(--space-md);
+  margin-right: var(--radius-md);
+}
+
+.lucide-folder-icon {
+  color: var(--category-shopping-text);
+}
+
+.lucide-flag-icon {
+  color: var(--category-personal-text);
+}
+
+.category a:hover .item,
+.priority a:hover .item {
+  color: var(--priority-low-text);
+}
+
+.item {
+  margin-bottom: var(--radius-md);
+  font-size: var(--base-font-size);
+}
+
+.item-count {
+  font-size: var(--radius-md);
+  width: var(--space-lg);
+  height: var(--space-lg);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.category .all {
+  background-color: var(--color-border);
+}
+
+.category .education {
+  background-color: var(--category-study-bg);
+  color: var(--category-study-text);
+}
+
+.category .personal {
+  background-color: var(--category-personal-bg);
+  color: var(--category-personal-text);
+}
+
+.category .work {
+  background-color: var(--category-work-bg);
+  color: var(--category-work-text);
+}
+
+/* Main Content - Side Bar - Priority */
+
+.priority .high-p {
+  background-color: var(--priority-high-bg);
+  color: var(--priority-high-text);
+}
+
+.priority .mid-p {
+  background-color: var(--priority-medium-bg);
+  color: var(--priority-medium-text);
+}
+
+.priority .low-p {
+  background-color: var(--priority-low-bg);
+  color: var(--priority-low-text);
+}

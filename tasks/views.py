@@ -35,8 +35,8 @@ class TaskListView(LoginRequiredMixin, ListView):
 
         tasks = self.object_list
 
-        # Today
 
+        # Today
         jdatetime.set_locale(jdatetime.FA_LOCALE)
         today = jdatetime.datetime.fromgregorian(datetime=timezone.now())
         context["today"] = today.strftime("%A %d %B %Y")

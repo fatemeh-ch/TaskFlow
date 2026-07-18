@@ -5,15 +5,14 @@
 @import url("./base/base.css");
 @import url("./base/utilities.css");
 
-
 /* Components */
 @import url("./components/input.css");
 @import url("./components/button.css");
 @import url("./components/card.css");
 
-
 /*Pages*/
 @import url("./pages/auth.css");
+@import url("./pages/dashboard_header_footer.css");
+@import url("./pages/dashboard_sidebar.css");
 @import url("./pages/dashboard.css");
-
 

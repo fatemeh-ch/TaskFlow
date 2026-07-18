@@ -1,0 +1,93 @@
+/* Header */
+
+.dashboard-header,
+.footer {
+  background-color: var(--color-surface);
+  height: min(20%, 250px);
+  padding: 1rem 2rem;
+  gap: var(--space-lg);
+}
+
+/* Header - Profile */
+
+.profile img {
+  width: var(--space-xl);
+  height: var(--space-xl);
+  margin-right: var(--space-sm);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.user-full-name {
+  font-size: var(--base-font-size);
+}
+
+/* Header - Logo */
+
+.dashboard-logo img {
+  width: var(--space-xl);
+  margin-right: var(--space-sm);
+}
+
+.dashboard-logo h1 {
+  color: var(--color-primary);
+  font-size: var(--space-md);
+}
+
+.user-name svg {
+  margin-right: var(--space-xs);
+}
+
+/* Header - Searchbox */
+
+.search {
+  flex: 1;
+  margin: 0 var(--space-xl);
+  max-width: 600px;
+  min-width: 220px;
+}
+
+.search form {
+  width: 100%;
+}
+
+/* Footer - Pagination */
+
+.pagination {
+  gap: 2rem;
+}
+
+.current-page {
+  width: var(--radius-xl);
+  height: var(--radius-xl);
+  padding: 1.3rem;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-size: var(--base-font-size);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.other-page {
+  gap: 2rem;
+}
+
+.other-page a {
+  font-size: var(--base-font-size);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  width: var(--radius-lg);
+  height: var(--radius-lg);
+  padding: var(--radius-xl);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
