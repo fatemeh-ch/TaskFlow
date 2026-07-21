@@ -2,6 +2,7 @@ import jdatetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
+import datetime
 from django.views.generic import ListView
 
 from tasks.models import Task, TaskStatus
@@ -18,23 +19,52 @@ class TaskListView(LoginRequiredMixin, ListView):
         pending tasks, completion progress, today's date, and the nearest
         upcoming task.
     """
-        
+
     model = Task
     template_name = 'tasks/dashboard.html'
     context_object_name = 'tasks'
     paginate_by = 3
 
     def get_queryset(self):
-        return (
-            Task.objects.filter(user=self.request.user)
-            .select_related('category')
-        )
+        """
+            Return the authenticated user's tasks, optionally filtered by a query parameter.
+
+            Supported filters:
+                - all: Return all tasks (default behavior).
+                - important: Tasks marked as important.
+                - incomplete: Tasks with pending status.
+                - overdue: Pending tasks whose deadline has already passed.
+                - today: Tasks scheduled for today.
+
+            The related category is fetched using `select_related()` to reduce
+            database queries when rendering the dashboard.
+        """
+
+        today = timezone.localdate()
+
+        queryset = Task.objects.filter(
+            user=self.request.user).select_related('category')
+        filter_name = self.request.GET.get('filter')
+
+        if filter_name == 'important':
+            queryset = queryset.filter(is_important=True)
+
+        elif filter_name == 'incomplete':
+            queryset = queryset.filter(status=TaskStatus.PENDING)
+
+        elif filter_name == 'overdue':
+            queryset = queryset.filter(
+                deadline__lt=timezone.now(), status=TaskStatus.PENDING)
+
+        elif filter_name == 'today':
+            queryset = queryset.filter(deadline__date=today)
+        
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         tasks = self.object_list
-
 
         # Today
         jdatetime.set_locale(jdatetime.FA_LOCALE)

@@ -193,10 +193,10 @@
                     </div>
                     <div class="task-details d-flex column-flex align-end">
                         {% if upcoming_task %}
-                            <p>{{ upcoming_task.title }}</p>
-                            <p>{{ upcoming_task.deadline|jalali }}</p>
+                        <p>{{ upcoming_task.title }}</p>
+                        <p>{{ upcoming_task.deadline|jalali }}</p>
                         {% else %}
-                            <p class="no-task">تسکی برای آینده وجود ندارد.</p>
+                        <p class="no-task">تسکی برای آینده وجود ندارد.</p>
                         {% endif %}
                     </div>
                     <div class="progress-container d-flex">
@@ -215,7 +215,7 @@
             <section class="task-filters d-flex center">
 
                 <!-- Filter Item -All- -->
-                <a href="#">
+                <a href="?filter=all">
                     <div class="filter-item card d-flex center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -230,7 +230,7 @@
                 </a>
 
                 <!-- Filter Item -incomplete- -->
-                <a href="#">
+                <a href="?filter=incomplete">
                     <div class="filter-item card d-flex center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -244,8 +244,8 @@
                 </a>
 
 
-                <!-- Filter Item -Incomplete- -->
-                <a href="#">
+                <!-- Filter Item -Overdue- -->
+                <a href="?filter=overdue">
                     <div class="filter-item card d-flex center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -260,7 +260,7 @@
                 </a>
 
                 <!-- Filter Item -Important- -->
-                <a href="#">
+                <a href="?filter=important">
                     <div class="filter-item card d-flex center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -275,7 +275,7 @@
                 </a>
 
                 <!-- Filter Item -Today- -->
-                <a href="#">
+                <a href="?filter=today">
                     <div class="filter-item card d-flex center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
