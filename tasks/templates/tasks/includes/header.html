@@ -34,21 +34,22 @@
         </div>
 
         {% if request.user.profile.avatar %}
-        
-            <img src="{{ request.user.profile.avatar.url }}" alt="user-avatar" class="profile-picture">
+
+        <img src="{{ request.user.profile.avatar.url }}" alt="user-avatar" class="profile-picture">
 
         {% else %}
 
-            <img src="{% static 'images/default_user.png' %}" alt="user-avatar" class="profile-picture">
+        <img src="{% static 'images/default_user.png' %}" alt="user-avatar" class="profile-picture">
 
         {% endif %}
     </section>
 
     <!-- Search Box -->
     <section class="search d-flex position-relative">
-        <form method="get" class="d-flex">
-            <input type="text" name="search" placeholder="جستجوی تسک ..." class="searchbox-inpt">
-            <button class="position-absolute search-btn">
+        <form method="get" class="d-flex" action="{% url 'tasks:dashboard' %}">
+            <input type="text" name="search" placeholder="جستجوی تسک ..." class="searchbox-inpt"
+                value="{{ request.GET.search }}">
+            <button class="position-absolute search-btn" type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-search-icon lucide-search">

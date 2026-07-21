@@ -2,7 +2,6 @@ import jdatetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
-import datetime
 from django.views.generic import ListView
 
 from tasks.models import Task, TaskStatus
@@ -36,6 +35,9 @@ class TaskListView(LoginRequiredMixin, ListView):
                 - overdue: Pending tasks whose deadline has already passed.
                 - today: Tasks scheduled for today.
 
+            Search:
+                - search: Filter tasks by title using a case-insensitive lookup.
+
             The related category is fetched using `select_related()` to reduce
             database queries when rendering the dashboard.
         """
@@ -58,20 +60,45 @@ class TaskListView(LoginRequiredMixin, ListView):
 
         elif filter_name == 'today':
             queryset = queryset.filter(deadline__date=today)
-        
+
+        search = self.request.GET.get('search')
+        if search:
+            queryset = queryset.filter(title__icontains=search)
+
         return queryset
 
     def get_context_data(self, **kwargs):
+        """
+        Add dashboard-specific context data for rendering the task overview.
+
+        In addition to the paginated task list provided by ``ListView``, this
+        method injects summary statistics and helper values used throughout the
+        dashboard template, including:
+
+        - Current date in the Jalali calendar.
+        - Task counts grouped by category.
+        - Task counts grouped by priority.
+        - Number of pending tasks.
+        - Total and completed task counts.
+        - Overall completion progress percentage.
+        - The nearest upcoming pending task.
+
+        Returns:
+            dict: Context data required to render the dashboard template.
+    """
+
         context = super().get_context_data(**kwargs)
 
         tasks = self.object_list
 
         # Today
+
         jdatetime.set_locale(jdatetime.FA_LOCALE)
         today = jdatetime.datetime.fromgregorian(datetime=timezone.now())
         context["today"] = today.strftime("%A %d %B %Y")
 
         # Categories
+
         context['category_counts'] = {
             'all': tasks.count(),
             'study': tasks.filter(category__slug='study').count(),
@@ -80,6 +107,7 @@ class TaskListView(LoginRequiredMixin, ListView):
         }
 
         # Priorities
+
         context['priority_counts'] = {
             'high': tasks.filter(priority='high').count(),
             'medium': tasks.filter(priority='medium').count(),
@@ -87,10 +115,12 @@ class TaskListView(LoginRequiredMixin, ListView):
         }
 
         # Pending Tasks
+
         context['pending_tasks'] = tasks.filter(
             status=TaskStatus.PENDING).count()
 
         # Progress
+
         total_tasks = tasks.count()
         completed_tasks = tasks.filter(status=TaskStatus.COMPLETED).count()
 
@@ -100,6 +130,7 @@ class TaskListView(LoginRequiredMixin, ListView):
             round((completed_tasks / total_tasks) * 100) if total_tasks else 0)
 
         # Upcoming task
+
         context["upcoming_task"] = (
             tasks.filter(
                 deadline__isnull=False,
