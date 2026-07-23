@@ -149,7 +149,7 @@
         </aside>
 
         <!-- Main content -->
-        <div class="main-content d-grid">
+        <main class="main-content d-grid">
 
             <!-- Task status - Progress Bar and Detail -->
             <section class="task-status d-grid">
@@ -320,7 +320,7 @@
 
                     <!-- Task Description -->
                     <div class="task-description d-flex column-flex">
-                        <a href="#">
+                        <a href="{% url 'tasks:task-detail' pk=task.id %}">
                             <h4> {{ task.title }} </h4>
                         </a>
                         <p>{{ task.description }}</p>
@@ -364,7 +364,7 @@
                 {% endfor %}
 
             </section>
-        </div>
+        </main>
     </div>
 </div>
 

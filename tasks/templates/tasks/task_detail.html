@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load jalali %}
+
+{% block title %} جزئیات تسک {% endblock %}
+
+{% block content %}
+
+{% include 'tasks/includes/header.html' %}
+
+<div class="main-container d-flex column-flex">
+
+    <!-- Top Header -->
+    <div class="top-header d-flex justify-space-between">
+        <div class="right d-flex">
+            <a href="{% url 'tasks:dashboard' %}" class="d-flex justify-space-between">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-house-icon lucide-house">
+                    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                    <path
+                        d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                </svg>
+                داشبورد
+            </a>
+            <p>/</p>
+            <p>جزئیات تسک</p>
+        </div>
+
+        <div class="left">
+            <a href="{% url 'tasks:dashboard' %}" class="d-flex">
+                بازگشت به لیست
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-chevron-left-icon lucide-chevron-left">
+                    <path d="m15 18-6-6 6-6" />
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-main-content d-grid">
+
+        <!-- Side Bar -->
+        <aside class="sidebar d-flex column-flex">
+
+            <!-- Task Information -->
+            <section class="task-info-sidebar d-flex column-flex card">
+
+                <!-- Title -->
+                <h3 class="d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-info-icon lucide-info">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4" />
+                        <path d="M12 8h.01" />
+                    </svg>
+                    اطلاعات تسک
+                </h3>
+
+                <!-- Information -->
+
+                <!-- Created_at -->
+                <div class="item d-flex justify-space-between">
+
+                    <div class="right d-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-calendar-days-icon lucide-calendar-days">
+                            <path d="M8 2v4" />
+                            <path d="M16 2v4" />
+                            <rect width="18" height="18" x="3" y="4" rx="2" />
+                            <path d="M3 10h18" />
+                            <path d="M8 14h.01" />
+                            <path d="M12 14h.01" />
+                            <path d="M16 14h.01" />
+                            <path d="M8 18h.01" />
+                            <path d="M12 18h.01" />
+                            <path d="M16 18h.01" />
+                        </svg>
+                        تاریخ ایجاد
+                    </div>
+
+                    <div class="left d-flex">
+                        <p>{{task.created_at|jalali:"%d %B %Y" }}</p>
+                    </div>
+                </div>
+
+                <!-- Updated_at -->
+                <div class="item d-flex justify-space-between">
+
+                    <div class="right d-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-calendar-days-icon lucide-calendar-days">
+                            <path d="M8 2v4" />
+                            <path d="M16 2v4" />
+                            <rect width="18" height="18" x="3" y="4" rx="2" />
+                            <path d="M3 10h18" />
+                            <path d="M8 14h.01" />
+                            <path d="M12 14h.01" />
+                            <path d="M16 14h.01" />
+                            <path d="M8 18h.01" />
+                            <path d="M12 18h.01" />
+                            <path d="M16 18h.01" />
+                        </svg>
+                        آخرین ویرایش
+                    </div>
+
+                    <div class="left d-flex">
+                        <p>{{task.updated_at|jalali:"%d %B %Y" }}</p>
+                    </div>
+                </div>
+
+                <!-- Created By -->
+                <div class="item d-flex justify-space-between">
+
+                    <div class="right d-flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-user-round-icon lucide-user-round">
+                            <circle cx="12" cy="8" r="5" />
+                            <path d="M20 21a8 8 0 0 0-16 0" />
+                        </svg>
+                        ایجاد شده توسط
+                    </div>
+
+                    <div class="left d-flex">
+                        <p>{{task.user.get_full_name}}</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Task Operations -->
+            <section class="task-operations d-flex column-flex card">
+
+                <!-- Title -->
+                <h3 class="d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-settings-icon lucide-settings">
+                        <path
+                            d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    عملیات
+                </h3>
+
+                <!-- Operations -->
+
+                <!-- Task Edit -->
+                <div class="item d-flex">
+                    <a href="#" class="d-flex edit-task">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-pencil-icon lucide-pencil">
+                            <path
+                                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                            <path d="m15 5 4 4" />
+                        </svg>
+                        ویرایش
+                    </a>
+                </div>
+
+                <!-- Add Subtask -->
+                <div class="item d-flex">
+                    <a href="#" class="d-flex add-sub-task">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-plus-icon lucide-plus">
+                            <path d="M5 12h14" />
+                            <path d="M12 5v14" />
+                        </svg>
+                        افزودن زیر تسک
+                    </a>
+                </div>
+
+                <!-- Task Delete -->
+                <div class="item d-flex">
+                    <a href="#" class="d-flex delete-task">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-trash-icon lucide-trash">
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                            <path d="M3 6h18" />
+                            <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                        </svg>
+                        حذف
+                    </a>
+                </div>
+            </section>
+        </aside>
+
+        <!-- Main Content -->
+    </div>
+
+</div>
+
+{% endblock %}
