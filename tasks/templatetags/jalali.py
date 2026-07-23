@@ -5,12 +5,9 @@ register = template.Library()
 
 
 @register.filter
-def jalali(value):
-    """
-        Convert date to Jalali date
-    """
+def jalali(value, fmt="%A %d %B %Y - %H:%M"):
     if not value:
         return ""
 
     j_date = jdatetime.datetime.fromgregorian(datetime=value)
-    return j_date.strftime("%A %d %B %Y - %H:%M")
+    return j_date.strftime(fmt)

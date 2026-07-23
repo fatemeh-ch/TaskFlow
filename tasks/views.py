@@ -2,7 +2,7 @@ import jdatetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from tasks.models import Task, TaskStatus
 
@@ -140,5 +140,53 @@ class TaskListView(LoginRequiredMixin, ListView):
             .order_by("deadline")
             .first()
         )
+
+        return context
+
+
+class TaskDetailView(LoginRequiredMixin, DetailView):
+    """
+    Display the details of a single task belonging to the authenticated user.
+
+    This view ensures that users can only access their own tasks by
+    restricting the queryset to tasks created by the current user.
+    Additional context data is provided for rendering Jalali-formatted
+    creation and update dates in the template.
+    """
+
+    model = Task
+    context_object_name = "task"
+    template_name = "tasks/task_detail.html"
+
+    def get_object(self, queryset=None):
+        """
+        Retrieve the requested task while enforcing object-level ownership.
+
+        Only tasks that belong to the authenticated user can be accessed.
+        Attempting to access another user's task will result in a 404 error.
+        """
+        queryset = Task.objects.filter(user=self.request.user)
+        return super().get_object(queryset)
+
+    def get_context_data(self, **kwargs):
+        """
+        Add extra context required by the task detail template.
+
+        The task's creation and last update timestamps are converted to
+        Jalali format for display in the sidebar.
+        """
+        context = super().get_context_data(**kwargs)
+
+        jdatetime.set_locale(jdatetime.FA_LOCALE)
+
+        created_at = jdatetime.datetime.fromgregorian(
+            datetime=self.object.created_at
+        )
+        updated_at = jdatetime.datetime.fromgregorian(
+            datetime=self.object.updated_at
+        )
+
+        context["created_at"] = created_at.strftime("%d %B")
+        context["updated_at"] = updated_at.strftime("%d %B")
 
         return context
