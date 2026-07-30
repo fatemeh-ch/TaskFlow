@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="left d-flex">
-                        <p>{{task.created_at|jalali:"%d %B %Y" }}</p>
+                        <p>{{task.created_at|jalali:"%d %B %y" }}</p>
                     </div>
                 </div>
 
@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="left d-flex">
-                        <p>{{task.updated_at|jalali:"%d %B %Y" }}</p>
+                        <p>{{task.updated_at|jalali:"%d %B %y" }}</p>
                     </div>
                 </div>
 
@@ -130,7 +130,7 @@
                     </div>
 
                     <div class="left d-flex">
-                        <p>{{task.user.get_full_name}}</p>
+                        <p>{{task.user.first_name}}</p>
                     </div>
                 </div>
             </section>
@@ -196,7 +196,185 @@
         </aside>
 
         <!-- Main Content -->
+
+        <main class="main-content detail-main-content d-flex column-flex card">
+
+            <!-- Main Title -->
+
+            <h1 class="main-title d-flex align-items-center">
+                {% if task.is_important %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-star-icon lucide-star">
+                    <path
+                        d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+                </svg>
+
+                {% endif %}
+
+                {{task.title}}
+            </h1>
+
+            <!-- Task Information -->
+
+            <section class="task-detail-info d-flex justify-content-center">
+
+                <!-- Task Status -->
+                <div class="task-info-item d-flex column-flex align-items-center">
+                    <p>وضعیت</p>
+                    <div class="item d-flex task-detail-status-{{task.status}}">
+                        {% if task.status == "pending" %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-dashed-icon lucide-circle-dashed">
+                            <path d="M10.1 2.182a10 10 0 0 1 3.8 0" />
+                            <path d="M13.9 21.818a10 10 0 0 1-3.8 0" />
+                            <path d="M17.609 3.721a10 10 0 0 1 2.69 2.7" />
+                            <path d="M2.182 13.9a10 10 0 0 1 0-3.8" />
+                            <path d="M20.279 17.609a10 10 0 0 1-2.7 2.69" />
+                            <path d="M21.818 10.1a10 10 0 0 1 0 3.8" />
+                            <path d="M3.721 6.391a10 10 0 0 1 2.7-2.69" />
+                            <path d="M6.391 20.279a10 10 0 0 1-2.69-2.7" />
+                        </svg>
+                        {% elif task.status == "completed" %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check-icon lucide-circle-check">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+                        {% endif %}
+
+                        {{task.get_status_display}}
+                    </div>
+                </div>
+
+                <!-- Task Priority -->
+
+                <div class="task-info-item d-flex column-flex align-items-center">
+                    <p>اولویت</p>
+                    <div class="item d-flex task-priority-{{task.priority}}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-flag-icon lucide-flag">
+                            <path
+                                d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" />
+                        </svg>
+                        {{task.get_priority_display}}
+                    </div>
+                </div>
+
+                <!-- Task Category -->
+                <div class="task-info-item d-flex column-flex align-items-center">
+                    <p>دسته بندی</p>
+                    <div class="item d-flex task-category-{{task.category.slug}}">
+                        {% if task.category.slug == "study" %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-book-open-icon lucide-book-open">
+                            <path d="M12 5v16" />
+                            <path
+                                d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
+                        </svg>
+
+                        {% elif task.category.slug == "personal" %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-person-standing-icon lucide-person-standing">
+                            <circle cx="12" cy="5" r="1" />
+                            <path d="m9 20 3-6 3 6" />
+                            <path d="m6 8 6 2 6-2" />
+                            <path d="M12 10v4" />
+                        </svg>
+
+                        {% elif task.category.slug == "work" %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-briefcase-business-icon lucide-briefcase-business">
+                            <path d="M12 12h.01" />
+                            <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                            <path d="M22 13a18.15 18.15 0 0 1-20 0" />
+                            <rect width="20" height="14" x="2" y="6" rx="2" />
+                        </svg>
+
+                        {% endif %}
+
+                        {{task.category}}
+                    </div>
+                </div>
+
+                <!-- Task Deadline -->
+
+                <div class="task-info-item d-flex column-flex align-items-center">
+                    <p>تاریخ سر رسید</p>
+                    {{task.deadline|jalali:"%Y/%m/%d - %H:%M"}}
+                </div>
+
+            </section>
+
+            <!-- Task Description -->
+            <section class="task-desc-detail d-flex column-flex">
+
+                <h2 class="task-desc d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-scroll-text-icon lucide-scroll-text">
+                        <path d="M15 12h-5" />
+                        <path d="M15 8h-5" />
+                        <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                        <path
+                            d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+                    </svg>
+                    {{task.description}}
+                </h2>
+
+                <!-- SubTasks -->
+
+                <ul class="sub-tasks d-flex column-flex">
+
+                    {% for subtask in subtasks %}
+                    <li
+                        class="subtask-row d-flex align-items-center {% if subtask.is_completed %}subtask-row--done{% endif %}">
+
+                        <form method="post" action="{% url 'tasks:toggle-subtask' subtask.pk %}" class="subtask-form">
+                            {% csrf_token %}
+                            <button type="submit"
+                                class="subtask-toggle d-grid {% if subtask.is_completed %}subtask-toggle--done{% endif %}">
+                                {% if subtask.is_completed %}✓{% endif %}
+                            </button>
+                        </form>
+
+                        <span class="subtask-title {% if subtask.is_completed %}subtask-title--done{% endif %}">
+                            {{ subtask.title }}
+                        </span>
+                    </li>
+
+                    {% empty %}
+                    <li class="no-subtask">ساب‌ تسکی وجود ندارد</li>
+                    {% endfor %}
+
+                </ul>
+            </section>
+
+            <!-- Task Progress Bar -->
+            <div class="progress-detail d-flex align-items-center">
+
+                <label class="progress-title">پیشرفت کلی</label>
+
+                <span class="progress-percent">{{ progress }}%</span>
+
+                <div class="progress d-flex">
+                    <div class="progress-fill" style="width: {{ progress }}%;"></div>
+                </div>
+
+            </div>
+        </main>
     </div>
+
+    </section>
+
+</div>
+</div>
 
 </div>
 

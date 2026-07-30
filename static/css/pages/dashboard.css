@@ -29,7 +29,7 @@
 /* Main Container */
 
 .dashboard-main-content {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-xl);
   grid-template-columns: 20% 80%;
 }
 
@@ -248,32 +248,28 @@
   margin-right: 0 !important;
 }
 
-/* Low Priority Task */
-.priority-low-text {
+/* Task Priority */
+
+.task-priority{
+  font-weight: 200;
+  gap: var(--space-sm);
+}
+
+.task-priority-low{
+  background-color: var(--priority-low-bg);
   color: var(--priority-low-text);
 }
 
-.low-priority {
-  background-color: var(--priority-low-bg);
-}
-
-/* Medium Priority Task */
-.priority-medium-text {
+.task-priority-medium{
+  background-color: var(--priority-medium-bg);
   color: var(--priority-medium-text);
 }
 
-.medium-priority {
-  background-color: var(--priority-medium-bg);
-}
-
-/* High Priority Task */
-.priority-high-text {
+.task-priority-high{
+  background-color: var(--priority-high-bg);
   color: var(--priority-high-text);
 }
 
-.high-priority {
-  background-color: var(--priority-high-bg);
-}
 
 /* Task Statement */
 

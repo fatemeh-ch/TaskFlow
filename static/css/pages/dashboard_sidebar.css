@@ -16,7 +16,7 @@
   color: var(--category-shopping-text);
 }
 
-.lucide-flag-icon {
+.sidebar .lucide-flag-icon {
   color: var(--category-personal-text);
 }
 
