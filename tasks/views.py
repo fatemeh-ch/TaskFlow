@@ -2,9 +2,11 @@ import jdatetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
+from django.shortcuts import get_object_or_404, redirect
+from django.views import View
 from django.views.generic import ListView, DetailView
 
-from tasks.models import Task, TaskStatus
+from tasks.models import Task, TaskStatus, SubTask
 
 # Create your views here.
 
@@ -148,10 +150,9 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
     """
     Display the details of a single task belonging to the authenticated user.
 
-    This view ensures that users can only access their own tasks by
-    restricting the queryset to tasks created by the current user.
-    Additional context data is provided for rendering Jalali-formatted
-    creation and update dates in the template.
+    Users can only access their own tasks. The view also provides
+    additional context such as Jalali dates, subtasks, and completion
+    progress for rendering the task detail page.
     """
 
     model = Task
@@ -170,10 +171,13 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         """
-        Add extra context required by the task detail template.
+            Add extra context required by the task detail template.
 
-        The task's creation and last update timestamps are converted to
-        Jalali format for display in the sidebar.
+            The context includes:
+
+            - Jalali-formatted creation and update dates.
+            - All subtasks related to the current task.
+            - Overall completion progress calculated from completed subtasks.
         """
         context = super().get_context_data(**kwargs)
 
@@ -189,4 +193,33 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
         context["created_at"] = created_at.strftime("%d %B")
         context["updated_at"] = updated_at.strftime("%d %B")
 
+        # Subtasks
+        subtasks = self.object.subtasks.all()
+
+        context['subtasks'] = subtasks
+
+        # Progress
+
+        subtasks_count = subtasks.count()
+        completed_subtasks = subtasks.filter(is_completed=True).count()
+
+        context["progress"] = (
+            round((completed_subtasks / subtasks_count) * 100)
+            if subtasks_count else 0
+        )
+
         return context
+
+
+class ToggleSubTaskView(LoginRequiredMixin, View):
+    """
+    Toggle the completion state of a subtask that belongs to the current user.
+    """
+
+    def post(self, request, pk):
+        subtask = get_object_or_404(SubTask, pk=pk, task__user=request.user)
+
+        subtask.is_completed = not subtask.is_completed
+        subtask.save()
+
+        return redirect("tasks:task-detail", pk=subtask.task.pk)
